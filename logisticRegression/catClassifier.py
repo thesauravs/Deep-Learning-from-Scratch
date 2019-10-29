@@ -163,7 +163,8 @@ def model(X_train, Y_train, X_test, Y_test, num_iter = 2000, learning_rate = 0.5
     
     return d
 
-d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iter = 10000, learning_rate = 0.0001, print_cost = True)
+d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iter = 10000, 
+          learning_rate = 0.0001, print_cost = True)
 
 #print(test_set_y)
 #print(d["Y_predict_test"])

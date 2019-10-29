@@ -1,6 +1,6 @@
 import sigmoid
 import numpy as np
-import image2vector as imtov
+import image2vector as imtovec
 import cv2
 import normalizeRows
 import softmax
