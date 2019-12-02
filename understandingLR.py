@@ -5,6 +5,7 @@
 # We shall dig into the working of LR
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 def sigmoid(z):
     return (1 / (1 + np.exp(-z)))
@@ -46,7 +47,9 @@ print(np.log(a))
 print(y * np.log(a))
 
 # Calculating the cost
+costs = []
 cost = - np.sum(( y*np.log(a) + ((1-y)*np.log(1-a)) )) / m
+costs.append(cost)
 print(cost)
 
 # Backward propagation
@@ -85,6 +88,7 @@ a = sigmoid(z)
 print(a)
 
 cost = - np.sum(( y*np.log(a) + ((1-y)*np.log(1-a)) )) / m
+costs.append(cost)
 print(cost)
 
 dz = (a - y)
@@ -115,6 +119,7 @@ a = sigmoid(z)
 print(a)
 
 cost = - np.sum(( y*np.log(a) + ((1-y)*np.log(1-a)) )) / m
+costs.append(cost)
 print(cost)
 
 dz = (a - y)
@@ -134,13 +139,15 @@ print(b)
 a = sigmoid(np.dot(w.T, x) + b)
 print(a)
 
+
 #--------------------------------------------------------------------
 # More iterations
-for i in range(50000):
+for i in range(200000):
     z = np.dot(w.T, x) + b
     a = sigmoid(z)
     
     cost = - np.sum(( y*np.log(a) + ((1-y)*np.log(1-a)) )) / m
+    costs.append(cost)
     if i%500 == 0:
         print(i, cost)
     
@@ -170,5 +177,11 @@ print(w.shape)
 print(b)
 result = sigmoid(np.dot(w.T, test) + b)
 print(result)
+
+plt.plot(list(range(200003)), costs)
+plt.xlabel('Number of iterations')
+plt.ylabel('Costs')
+plt.title('Training set \n Iterations VS Costs')
+plt.show
 
 # Try different learning_rate and different number of iterations to see the changes
