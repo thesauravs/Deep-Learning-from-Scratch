@@ -62,7 +62,7 @@ print(dw)
 print(db)
 
 # Optimize / update Parameters
-learning_rate = 0.01
+learning_rate = 0.001
 w = w - learning_rate * dw
 b = b - learning_rate * db
 
@@ -135,13 +135,14 @@ a = sigmoid(np.dot(w.T, x) + b)
 print(a)
 
 #--------------------------------------------------------------------
-# More 1000 iterations
-for i in range(2000):
+# More iterations
+for i in range(50000):
     z = np.dot(w.T, x) + b
     a = sigmoid(z)
     
     cost = - np.sum(( y*np.log(a) + ((1-y)*np.log(1-a)) )) / m
-    print(cost)
+    if i%500 == 0:
+        print(i, cost)
     
     dz = (a - y)
     dw = np.dot(x, dz.T) / m
@@ -159,8 +160,9 @@ print(a) # final output
 test = np.array([[90],
                  [40],
                  [150],
-                 [30]])
-m_test = 4
+                 [30],
+                 [20]])
+m_test = 5
 print(test.shape)
 test = test.reshape(test.shape[1], m_test)
 print(w)
@@ -168,3 +170,5 @@ print(w.shape)
 print(b)
 result = sigmoid(np.dot(w.T, test) + b)
 print(result)
+
+# Try different learning_rate and different number of iterations to see the changes
