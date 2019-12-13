@@ -142,7 +142,7 @@ print(a)
 
 #--------------------------------------------------------------------
 # More iterations
-for i in range(200000):
+for i in range(50000):
     z = np.dot(w.T, x) + b
     a = sigmoid(z)
     
@@ -178,7 +178,7 @@ print(b)
 result = sigmoid(np.dot(w.T, test) + b)
 print(result)
 
-plt.plot(list(range(200003)), costs)
+plt.plot(costs)
 plt.xlabel('Number of iterations')
 plt.ylabel('Costs')
 plt.title('Training set \n Iterations VS Costs')
