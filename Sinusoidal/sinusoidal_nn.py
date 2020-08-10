@@ -86,15 +86,12 @@ hist.tail(7)
 
 predictions = model.predict(data[:])
 
-predictions = model.predict([math.radians(90), math.radians(30), 20])
-print(predictions)
-
-plt.scatter(data['x'], train_labels, color='g', s=0.05, label='Original')
-plt.scatter(data['x'], predictions[:], color='r', s=0.05, label='Predicted')
+plt.scatter(list(data['x']), train_labels, color='g', s=0.05, label='Original')
+plt.scatter(list(data['x']), predictions[:], color='r', s=0.05, label='Predicted')
 plt.xlabel('X')
 plt.ylabel('sin(X)')
 plt.title('Sine Wave')
-plt.legend(loc='best')
+plt.legend(loc='best', fontsize='large')
 plt.show()
 
 model.save('sine.h5')
